@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header dengan logo dan judul -->
+        <header>
+            <div class="logo-container">
+                <div class="logo-text">
+                    <h1><i class="fas fa-video"></i> ContentHub</h1>
+                    <p class="subtitle">Bisnis-Digital Content Creator</p>
+                </div>
+                <img src="media/image1.png" alt="Logo BISNIS" class="logo-image">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="index.html?page=jasa" class="nav-link"><i class="fas fa-photo-video"></i> Jasa</a></li>
+                    <li><a href="index.html?page=profil" class="nav-link"><i class="fas fa-building"></i> Profil Content</a></li>
+                    <li><a href="index.html?page=galeri" class="nav-link"><i class="fas fa-images"></i> Galeri</a></li>
+                    <li><a href="index.html?page=login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login Admin</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Frame utama untuk konten -->
+        <main class="content-frame">
+            <div class="frame-content">
+                <?php
+                // Fungsi untuk memuat halaman berdasarkan parameter URL
+                $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+                
+                // Daftar halaman yang valid
+                $valid_pages = ['home', 'produk', 'profil', 'galeri', 'login'];
+                
+                if (in_array($page, $valid_pages)) {
+                    include("pages/$page.php");
+                } else {
+                    include("pages/home.php");
+                }
+                ?>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Kontak Kami</h3>
+                    <p>Jl. Alam Asri No. 02, Bandung</p>
+                    <p>Email: info@gilangism08@gmail.com.com</p>
+                    <p>Telp: (821) 2009-8782</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-link"></i> Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="index.html?page=home">Home</a></li>
+                        <li><a href="index.html?page=jasa">Jasa</a></li>
+                        <li><a href="index.html?page=profil">Profil Content</a></li>
+                        <li><a href="index.html?page=login">Login Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-music"></i> Musik Latar</h3>
+                    <audio controls>
+                        <source src="media/background-music.mp3" type="audio/mpeg">
+                        Browser Anda tidak mendukung elemen audio.
+                    </audio>
+                    <p class="music-info">Musik: 009 Sound System - Dreamscapes</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BISNIS - Sistem Informasi Jasa Content Creator. Dibuat untuk UAS Pemrograman Web BD.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/sushisoda_x" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@shinylightx" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Dialog Box JavaScript -->
+    <div id="welcomeDialog" class="dialog-overlay">
+        <div class="dialog-box">
+            <div class="dialog-header">
+                <h2><i class="fas fa-info-circle"></i> Selamat Datang di BISNIS</h2>
+                <button class="close-dialog" onclick="closeDialog()">&times;</button>
+            </div>
+            <div class="dialog-body">
+                <p>Sistem Informasi Jasa Content Creator terbaik untuk kebutuhan digital Anda.</p>
+                <ul>
+                    <li>Konsultasi konten gratis</li>
+                    <li>Pembuatan video profesional</li>
+                    <li>Manajemen media sosial</li>
+                    <li>Paket harga terjangkau</li>
+                </ul>
+                <p>Gunakan menu navigasi untuk menjelajahi layanan kami.</p>
+            </div>
+            <div class="dialog-footer">
+                <button onclick="closeDialog()" class="btn-primary">Mulai Jelajahi</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
